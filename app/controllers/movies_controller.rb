@@ -2,7 +2,17 @@ class MoviesController < ApplicationController
   before_action :find_movie,  only: [:show, :edit, :update, :destroy]
 
   def index
-    @movies = Movie.all.order('created_at DESC')
+    # we now only want to display movie that have the same genre
+
+    # if the genre is blank then display all the movies
+    if params[:genre].blank?
+      @movies = Movie.all.order('created_at DESC')
+    else
+      # we are finding the genre by their name Genre.find_by(name: params[:genre]) and then we are getting its id
+      @genre_id = Genre.find_by(name: params[:genre]).id
+      # we are looking for all the movies that have the same :genre_id as @genre_id
+      @movies = Movie.where(:genre_id => @genre_id).order('created_at DESC')
+    end
   end
 
   def show
