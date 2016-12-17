@@ -5,6 +5,11 @@
 <h2><%= @movie.title %></h2>
 <h3><%= @movie.director %></h3>
 <p><%= @movie.description %></p>
-<%= link_to "Edit", edit_movie_path(@movie) %>
-<%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to "Back", root_path %>
+<div class="links btn_group">
+  <% if user_signed_in?%>
+    <% if @movie.user_id == current_user.id %>
+      <%= link_to "Edit", edit_movie_path(@movie) %>
+      <%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+  <% end %>
+</div>
