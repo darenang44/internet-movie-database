@@ -29,6 +29,21 @@
          <% end %>
        </ul>
        <ul class="nav navbar-nav">
+         <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+             Sort
+             <span class="caret"></span>
+           </a>
+           <ul class="dropdown-menu" role="menu">
+             <% Genre.all.each do |genre| %>
+             <!-- movies_path(genre: genre.name) is the way to show the genre in the url -->
+              <li class="<%= 'active' if params[:genre] == genre.name %>"><%= link_to genre.name, movies_path(genre: genre.name), class: "link" %></li>
+             <% end %>
+           </ul>
+         </li>
+
+
+
          <% if user_signed_in? %>
          <li>
            <%= link_to "Post A Movie", new_movie_path %>
