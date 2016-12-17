@@ -3,6 +3,12 @@
 <% keywords "Placeholder keywords" %>
 
 <h1>Edit Movie Info</h1>
-
-<%= render "form" %>
+  <%= simple_form_for @movie, :html => {:multipart => true} do |m| %>
+  <!-- since we want to edit the genre we want the current genre to show up -->
+    <%= m.select :genre_id, @genres %>
+    <%= m.input :title, label: "Movie Title" %>
+    <%= m.input :description %>
+    <%= m.input :director %>
+    <%= m.button :submit %>
+  <% end %>
 <%= link_to "Cancel", movie_path %>
