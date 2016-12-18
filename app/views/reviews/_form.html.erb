@@ -1,0 +1,9 @@
+<!-- in order to review a movie we have to first find the movie, and build the actual review-->
+
+<%= simple_form_for([@movie, @movie.reviews.build]) do |f| %>
+  <div id="rating-form">
+    <%= f.input :rating %>
+  </div>
+    <%= f.input :comment %>
+    <%= f.button :submit, class: "btn-custom2"%>
+<% end %>
