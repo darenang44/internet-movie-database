@@ -6,9 +6,11 @@
   <% if @movies.count == 0 %>
     <h3>There are no movies in this genre</h3>
   <% else %>
-    <% @movies.each do |movie| %>
-      <h2><%= link_to movie.title, movie_path(movie) %></h2>
-      <p><%= truncate(movie.description, length: 50) %></p>
-      <p>Directed By: <%= movie.director %></p>
-    <% end %>
+    <div class="row">
+      <% @movies.each do |movie| %>
+      <div class="col-md-3">
+        <a href="/movies/<%= movie.id %>"><%= image_tag movie.movie_img.url(:movie_index), class: "play" %></a>
+      </div>
+      <% end %>
+    </div>
   <% end %>
