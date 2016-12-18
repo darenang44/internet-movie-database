@@ -2,15 +2,26 @@
 <% description "Placeholder description." %>
 <% keywords "Placeholder keywords" %>
 
-<h2><%= @movie.title %></h2>
-<h3><%= @movie.director %></h3>
-<h4><%= @movie.genre.name %></h4>
-<p><%= @movie.description %></p>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @movie.movie_img(:movie_show), class: "play_show" %>
+  </div>
+  <div class="col-md-8">
+    <div class="play-info">
+      <h2 class="play-title"><%= @movie.title %></h2>
+      <h3 class="play-director"><span>From</span> <%= @movie.director %></h3>
+      <h4 class="play-director"><%= @movie.genre.name %></h4>
+      <p class="play-desc"><%= @movie.description %></p>
+    </div>
+  </div>
+</div>
+
 <div class="links btn_group">
   <% if user_signed_in?%>
     <% if @movie.user_id == current_user.id %>
-      <%= link_to "Edit", edit_movie_path(@movie) %>
-      <%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-custom" %>
+      <%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
     <% end %>
   <% end %>
 </div>
