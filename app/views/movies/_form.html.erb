@@ -2,6 +2,7 @@
 <!-- We are using the select tag to add the list of genres to pick from
      we are going to list the options by using options_for_select(@genres)-->
   <%= select_tag(:genre_id, options_for_select(@genres), :prompt => "Select A Genre") %>
+  <%= m.file_field :movie_img %>
   <%= m.input :title, label: "Movie Title" %>
   <%= m.input :description %>
   <%= m.input :director %>

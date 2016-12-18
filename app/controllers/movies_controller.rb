@@ -68,7 +68,7 @@ class MoviesController < ApplicationController
 
   def movie_params
     # we are adding :genre_id to movie_params bc now every movie needs to have a genre
-    params.require(:movie).permit(:title, :description, :director, :genre_id)
+    params.require(:movie).permit(:title, :description, :director, :genre_id, :movie_img)
   end
 
   def find_movie

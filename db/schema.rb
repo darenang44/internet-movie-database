@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217213047) do
+ActiveRecord::Schema.define(version: 20161218002325) do
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
@@ -22,10 +22,14 @@ ActiveRecord::Schema.define(version: 20161217213047) do
     t.string   "title"
     t.text     "description"
     t.string   "director"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "user_id"
     t.integer  "genre_id"
+    t.string   "movie_img_file_name"
+    t.string   "movie_img_content_type"
+    t.integer  "movie_img_file_size"
+    t.datetime "movie_img_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

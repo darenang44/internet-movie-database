@@ -4,6 +4,8 @@
 
 <h1>Edit Movie Info</h1>
   <%= simple_form_for @movie, :html => {:multipart => true} do |m| %>
+  <!-- this is the where we want to be able to upload the image -->
+    <%= m.file_field :movie_img %>
   <!-- since we want to edit the genre we want the current genre to show up -->
     <%= m.select :genre_id, @genres %>
     <%= m.input :title, label: "Movie Title" %>
