@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :find_movie,  only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,6 +17,11 @@ class MoviesController < ApplicationController
   end
 
   def show
+    if @movie.reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @movie.reviews.average(:rating).round(2)
+    end
   end
 
   def new

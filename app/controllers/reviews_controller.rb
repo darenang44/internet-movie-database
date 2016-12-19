@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :find_movie
   before_action :find_review, only: [:edit, :update, :destroy]
 
@@ -7,7 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(movie_params)
+    @review = Review.new(review_params)
 
     @review.movie_id = @movie.id
     @review.user_id = current_user.id
